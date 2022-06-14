@@ -1,4 +1,9 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using StudentCourse.Data;
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<StudentCourseContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("StudentCourseContext") ?? throw new InvalidOperationException("Connection string 'StudentCourseContext' not found.")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
