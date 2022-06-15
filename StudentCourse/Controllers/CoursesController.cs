@@ -27,24 +27,6 @@ namespace StudentCourse.Controllers
                           Problem("Entity set 'StudentCourseContext.Courses'  is null.");
         }
 
-        // GET: Courses/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null || _context.Courses == null)
-            {
-                return NotFound();
-            }
-
-            var courses = await _context.Courses
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (courses == null)
-            {
-                return NotFound();
-            }
-
-            return View(courses);
-        }
-
         // GET: Courses/Create
         public IActionResult Create()
         {
@@ -52,8 +34,6 @@ namespace StudentCourse.Controllers
         }
 
         // POST: Courses/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name")] Courses courses)
@@ -84,8 +64,6 @@ namespace StudentCourse.Controllers
         }
 
         // POST: Courses/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name")] Courses courses)

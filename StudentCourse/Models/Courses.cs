@@ -12,7 +12,7 @@ namespace StudentCourse.Models
         public int Id { get; set; }
         [Required]
         [MaxLength(200)]
-        [RegularExpression(@"^[A-Z]+[a-zA-Z0-9\s\-\.\&\(\)]*$")]
+        [RegularExpression(@"^[A-Z]+[a-zA-Z0-9\s\-\,\.\&\(\)]*$")]
         public string Name { get; set; }
     }
 }
