@@ -29,6 +29,10 @@ namespace StudentCourse.Data
             modelBuilder.Entity<Courses>()
                 .HasIndex(c => c.Name)
                 .IsUnique();
+
+            modelBuilder.Entity<StudentCourses>()
+                .HasIndex(c => new { c.CourseId, c.StudentId })
+                .IsUnique();
         }
     }
 }

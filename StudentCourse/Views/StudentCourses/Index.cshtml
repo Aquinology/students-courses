@@ -4,15 +4,17 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Students List for Course</h1>
+
+<h4>@ViewBag.CourseName</h4>
 
 <p>
-    <a asp-action="Create">Add New</a>
+    <a asp-action="Create" asp-route-courseid="@ViewBag.CourseId">Add Student</a>
 </p>
 <table class="table">
     <thead>
         <tr>
-            <th>
+            <th>    
                 @Html.DisplayNameFor(model => model.Students)
             </th>
             <th>

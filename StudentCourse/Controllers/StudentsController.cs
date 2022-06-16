@@ -27,6 +27,19 @@ namespace StudentCourse.Controllers
                           Problem("Entity set 'StudentCourseContext.Students'  is null.");
         }
 
+        public IActionResult StudentIdUnique(int studentid)
+        {
+            if (_context.Students == null)
+            {
+                return Problem("Entity set 'StudentCourseContext.Students'  is null.");
+            }
+            if (_context.Students.Any(x => x.StudentId == studentid))
+            {
+                return Json($"This student id is already in use.");
+            }
+            return Json(true);
+        }
+
         // GET: Students/Create
         public IActionResult Create()
         {

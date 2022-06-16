@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using Microsoft.AspNetCore.Mvc;
 
 namespace StudentCourse.Models
 {
@@ -13,6 +13,7 @@ namespace StudentCourse.Models
         [Required]
         [MaxLength(200)]
         [RegularExpression(@"^[A-Z]+[a-zA-Z0-9\s\-\,\.\&\(\)]*$")]
+        [Remote(action: "CourseNameUnique", controller: "Courses")]
         public string Name { get; set; }
     }
 }

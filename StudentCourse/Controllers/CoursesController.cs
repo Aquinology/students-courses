@@ -27,6 +27,19 @@ namespace StudentCourse.Controllers
                           Problem("Entity set 'StudentCourseContext.Courses'  is null.");
         }
 
+        public IActionResult CourseNameUnique(string name)
+        {
+            if (_context.Courses == null)
+            {
+                return Problem("Entity set 'StudentCourseContext.Courses'  is null.");
+            }
+            if (_context.Courses.Any(x => x.Name == name))
+            {
+                return Json($"This course name is already in use.");
+            }
+            return Json(true);
+        }
+
         // GET: Courses/Create
         public IActionResult Create()
         {

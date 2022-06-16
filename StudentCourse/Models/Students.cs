@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using StudentCourse.Data;
 
 namespace StudentCourse.Models
 {
@@ -16,6 +18,7 @@ namespace StudentCourse.Models
         public string Name { get; set; }
         [Required]
         [Range(1, 10000)]
+        [Remote(action: "StudentIdUnique", controller: "Students")]
         public int StudentId { get; set; }
         [Required]
         [MaxLength(10)]
