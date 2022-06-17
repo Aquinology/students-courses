@@ -53,12 +53,11 @@ namespace StudentCourse.Controllers
         // GET: StudentCourses/Create
         public IActionResult Create(int courseid)
         {
-            if (_context.StudentCourses == null)
+            if (_context.StudentCourses == null || _context.Students == null)
             {
                 return Problem("Entity set 'StudentCourseContext.StudentCourses'  is null.");
             }
             var students = _context.StudentCourses.Where(x => x.CourseId == courseid).Select(x => x.StudentId);
-            //var s = _context.Students.Where(x => x.Group == "IT-119");
             ViewData["StudentId"] = new SelectList(_context.Students.Where(x => !students.Contains(x.Id)), "Id", "Name");
             ViewBag.CourseId = courseid;
             return View();

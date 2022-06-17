@@ -16,3 +16,12 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+#navbar-text a {
+    color: white;
+}
+
+.row div {
+    min-height: 40px;
+    line-height: 40px;
+}
